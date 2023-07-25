@@ -9,8 +9,8 @@
 
 int _myhistory(info_t *info)
 {
-        print_list(info->history);
-        return (0);
+	print_list(info->history);
+	return (0);
 }
 /**
  *
@@ -22,10 +22,10 @@ int _myhistory(info_t *info)
  */
 int unset_alias(info_t *info, char *str)
 {
-        char *p, c;
-        int ret;
-
-        p = _strchr(str, '=');
+	char *p,c;
+	int ret;
+	
+	p = _strchr(str, '=');
         if (!p)
                 return (1);
         c = *p;
