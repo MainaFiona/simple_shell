@@ -2,7 +2,7 @@
 /**
  * list_len - function that will print the lenght of a list
  *
- * @h: head node 
+ * @h: head node
  * Return: list size
  */
 size_t list_len(const list_t *h)
@@ -54,7 +54,7 @@ char **list_to_strings(list_t *head)
 	return (strs);
 }
 /**
- * 
+ *
  *
  *
  *
