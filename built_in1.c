@@ -1,24 +1,21 @@
 #include "main.h"
 /**
+ * myhistory - will display history list
+ * @info: struct that contains potential args
  *
- *
- *
- *
- *
+ * Return: Always (0)
  */
 
-int _myhistory(info_t *info)
+int myhistory(info_t *info)
 {
 	print_list(info->history);
 	return (0);
 }
 /**
- *
- *
- *
- *
- *
- *
+ * unset_alias - it will set to strings
+ * @info: struct param
+ * @str: string
+ * Return: on success always 0, 1 if error
  */
 int unset_alias(info_t *info, char *str)
 {
@@ -36,11 +33,10 @@ int unset_alias(info_t *info, char *str)
 	return (ret);
 }
 /**
- *
- *
- *
- *
- *
+ * set_alias -will set alias to string
+ * @info: struct param
+ * @str: string param
+ * Return: 0 on success, 1 on error
  */
 int set_alias(info_t *info, char *str)
 {
@@ -56,11 +52,10 @@ int set_alias(info_t *info, char *str)
 	return (add_node_end(&(info->alias), str, 0) == NULL);
 }
 /**
+ * print_alias - will print a alias string
+ * @node: node alias
  *
- *
- *
- *
- *
+ * Return: 0 on success, else 1 if error
  */
 int print_alias(list_t *node)
 {
@@ -79,13 +74,12 @@ int print_alias(list_t *node)
 	return (1);
 }
 /**
+ * myalias - will work just like the builtin
  *
- *
- *
- *
- *
+ * @info: struct that contains potential args
+ * Return: always 0
  */
-int _myalias(info_t *info)
+int myalias(info_t *info)
 {
 	int i = 0;
 	char *p = NULL;
