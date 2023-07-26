@@ -85,17 +85,17 @@ int replace_alias(info_t *info)
 	{
 		node = node_start_with(info->alias, info->argv[0], '=');
 		if (!node)
-			return(0);
+			return (0);
 		free(info->argv[0]);
 		p = _custom_strchr(node->str, '=');
 		if (!p)
-			return(0);
+			return (0);
 		p = _strdup(p + 1);
 		if (!p)
-			return(0);
+			return (0);
 		info->argv[0] = p;
 	}
-	return(1);
+	return (1);
 }
 /**
  * replace_vars - Replaces variables in the command arguments.
@@ -136,7 +136,7 @@ int replace_vars(info_t *info)
 		replace_string(&info->argv[i], _strdup(""));
 
 	}
-	return(0);
+	return (0);
 }
 /**
  * replace_string - Replaces old string with new string.
@@ -149,5 +149,5 @@ int replace_string(char **old, char *new)
 {
 	free(*old);
 	*old = new;
-	return(1);
+	return (1);
 }
