@@ -13,28 +13,27 @@ ssize_t input_buf(info_t *info, char **buff, size_t *len)
 
 	if (!*len)
 	{
-		free(*buf);
-		*buf = NULL;
+		free(*buff);
+		*buff = NULL;
 		signal(SIGINT, sigintHandler);
 #if USE_GETLINE
-		r = getline(buf, &len_p, stdin);
+		r = getline(buff, &len_p, stdin);
 #else
-		r = _getline(info, buf, &len_p);
+		r = _getline(info, buff, &len_p);
 #endif
 		if (r > 0)
 		{
-			if ((*buf)[r - 1] == '\n')
+			if ((*buff)[r - 1] == '\n')
 			{
-				(*buf)[r - 1] = '\0';
+				(*buff)[r - 1] = '\0';
 				r--;
 			}
 			info->linecount_flag = 1;
-			remove_comments(*buf);
-			build_history_list(info, *buf, info->histcount++);
-			/* if (_strchr(*buf, ';')) is this a command chain? */
+			remove_comments(*buff);
+			build_history_list(info, *buff, info->histcount++);
 			{
 				*len = r;
-				info->cmd_buf = buf;
+				info->cmd_buff = buff;
 			}
 		}
 	}
@@ -53,7 +52,7 @@ ssize_t get_input(info_t *info)
 	char **buff_p = &(info->arg), *p;
 
 	_putchar(BUFF_FLUSH);
-	r = input_buff(info, &buff, &len);
+	r = input_buf(info, &buff, &len);
 	if (r == -1)
 		return (-1);
 	if (len)
@@ -73,7 +72,7 @@ ssize_t get_input(info_t *info)
 		if (i >= len)
 		{
 			i = len = 0;
-			info->cmd_buf_type = CMD_NORM;
+			info->cmd_buff_type = CMD_NORM;
 		}
 
 		*buff_p = p;
@@ -96,7 +95,7 @@ ssize_t read_buff(info_t *info, char *buff, size_t *i)
 
 	if (*i)
 		return (0);
-	r = read(info->readfd, buff, READ_BUF_SIZE);
+	r = read(info->readfd, buff, READ_BUFF_SIZE);
 	if (r >= 0)
 		*i = r;
 	return (r);
@@ -111,7 +110,7 @@ ssize_t read_buff(info_t *info, char *buff, size_t *i)
  */
 int _getline(info_t *info, char **ptr, size_t *length)
 {
-	static char buf[READ_BUF_SIZE];
+	static char buff[READ_BUFF_SIZE];
 	static size_t i, len;
 	size_t k;
 	ssize_t r = 0, s = 0;
@@ -123,20 +122,20 @@ int _getline(info_t *info, char **ptr, size_t *length)
 	if (i == len)
 		i = len = 0;
 
-	r = read_buf(info, buf, &len);
+	r = read_buff(info, buff, &len);
 	if (r == -1 || (r == 0 && len == 0))
 		return (-1);
 
-	c = _strchr(buf + i, '\n');
-	k = c ? 1 + (unsigned int)(c - buf) : len;
+	c = _strchr(buff + i, '\n');
+	k = c ? 1 + (unsigned int)(c - buff) : len;
 	new_p = _realloc(p, s, s ? s + k : k + 1);
 	if (!new_p)
 		return (p ? free(p), -1 : -1);
 
 	if (s)
-		_strncat(new_p, buf + i, k - i);
+		_strncat(new_p, buff + i, k - i);
 	else
-		_strncpy(new_p, buf + i, k - i + 1);
+		_strncpy(new_p, buff + i, k - i + 1);
 
 	s += k - i;
 	i = k;
@@ -157,5 +156,5 @@ void sigintHandler(__attribute__((unused))int sig_num)
 {
 	_puts("\n");
 	_puts("$ ");
-	_putchar(BUF_FLUSH);
+	_putchar(BUFF_FLUSH);
 }

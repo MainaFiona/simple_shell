@@ -14,9 +14,9 @@
 
 /* Buffer */
 
-#define READ_BUF_SIZE 1024
-#define WRITE_BUF_SIZE 1024
-#define BUF_FLUSH -1
+#define READ_BUFF_SIZE 1024
+#define WRITE_BUFF_SIZE 1024
+#define BUFF_FLUSH -1
 
 /* command chain */
 #define CMD_NORM        0
@@ -128,6 +128,13 @@ int _eputchar(char);
 int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
 
+/* errors1 */
+int _erratoi(char *);
+void print_error(info_t *, char *);
+int print_d(int, int);
+char *convert_number(long int, int, int);
+void remove_comments(char *);
+
 /* string */
 int _strlen(char *);
 int _strcmp(char *, char *);
@@ -227,5 +234,5 @@ int is_chain(info_t *, char *, size_t *);
 void check_chain(info_t *, char *, size_t *, size_t, size_t);
 int replace_alias(info_t *);
 int replace_vars(info_t *);
-
+int replace_string(char **, char *);
 #endif

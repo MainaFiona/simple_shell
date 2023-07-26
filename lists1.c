@@ -73,14 +73,14 @@ size_t print_list(const list_t *h)
 	return (i);
 }
 /**
- * node_start_with - Finds the first node in a linked list
+ * node_starts_with - Finds the first node in a linked list
  * @node: Pointer to the head of the linked list
  * @prefix: Prefix string to search for
  * @c: Optional character to match after the prefix
  *
  * Return: Pointer to first matching node, or NULL if no match
  */
-list_t *node_start_with(list_t *node, char *prefix, char c)
+list_t *node_starts_with(list_t *node, char *prefix, char c)
 {
 	char *p = NULL;
 

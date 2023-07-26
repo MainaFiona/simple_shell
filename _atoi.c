@@ -1,23 +1,23 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- * interact - true if shell is interactive
+ * interactive - true if shell is interactive
  * @info: structure address
  *
  * Return: 1 if true else 0
  */
-int interact(info_t *info)
+int interactive(info_t *info)
 {
 	return (isatty(STDIN_FILENO) && info->readfd <= 2);
 }
 /**
- * isdelimit - looks if character is delimeter
+ * is_delim - looks if character is delimeter
  * @c: char to be checked
  * @delimit: delimeter string
  *
  * Return: 1 for true, 0 for false
  */
-int isdelimit(char c, char *delimit)
+int is_delim(char c, char *delimit)
 {
 	while (*delimit)
 		if (*delimit++ == c)

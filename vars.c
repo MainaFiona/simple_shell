@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * is_chain - Checks if there is a command chaining
@@ -17,18 +17,18 @@ int is_chain(info_t *info, char *buff, size_t *p)
 	{
 		buff[j] = 0;
 		j++;
-		info->cmd_buf_type = CMD_OR;
+		info->cmd_buff_type = CMD_OR;
 	}
 	else if (buff[j] == '&' && buff[j + 1] == '&')
 	{
 		buff[j] = 0;
 		j++;
-		info->cmd_buf_type = CMD_AND;
+		info->cmd_buff_type = CMD_AND;
 	}
 	else if (buff[j] == ';')
 	{
 		buff[j] = 0;
-		info->cmd_buf_type = CMD_CHAIN;
+		info->cmd_buff_type = CMD_CHAIN;
 	}
 	else
 		return (0);
@@ -49,7 +49,7 @@ void check_chain(info_t *info, char *buff, size_t *p, size_t i, size_t len)
 {
 	size_t j = *p;
 
-	if (info->cmd_buf_type == CMD_AND)
+	if (info->cmd_buff_type == CMD_AND)
 	{
 		if (info->status)
 		{
@@ -57,7 +57,7 @@ void check_chain(info_t *info, char *buff, size_t *p, size_t i, size_t len)
 			j = len;
 		}
 	}
-	if (info->cmd_buf_type == CMD_OR)
+	if (info->cmd_buff_type == CMD_OR)
 	{
 		if (!info->status)
 		{
@@ -83,11 +83,11 @@ int replace_alias(info_t *info)
 
 	for (i = 0; i < 10; i++)
 	{
-		node = node_start_with(info->alias, info->argv[0], '=');
+		node = node_starts_with(info->alias, info->argv[0], '=');
 		if (!node)
 			return (0);
 		free(info->argv[0]);
-		p = _custom_strchr(node->str, '=');
+		p = _strchr(node->str, '=');
 		if (!p)
 			return (0);
 		p = _strdup(p + 1);
@@ -117,27 +117,27 @@ int replace_vars(info_t *info)
 		if (!_strcmp(info->argv[i], "$?"))
 		{
 			replace_string(&(info->argv[i]),
-					_strdup(convert_num_base(info->status, 10, 0)));
+					_strdup(convert_number(info->status, 10, 0)));
 			continue;
 		}
 		if (!_strcmp(info->argv[i], "$$"))
 		{
 			replace_string(&(info->argv[i]),
-					_strdup(convert_num_base(getpid(), 10, 0)));
+					_strdup(convert_number(getpid(), 10, 0)));
 			continue;
 		}
-		node = node_start_with(info->env, &info->argv[i][1], '=');
+		node = node_starts_with(info->env, &info->argv[i][1], '=');
 		if (node)
 		{
 			replace_string(&(info->argv[i]),
-					_strdup(_custom_strchr(node->str, '=') + 1));
+					_strdup(_strchr(node->str, '=') + 1));
 			continue;
 		}
 		replace_string(&info->argv[i], _strdup(""));
-
 	}
 	return (0);
 }
+
 /**
  * replace_string - Replaces old string with new string.
  * @old: Pointer to  old string.

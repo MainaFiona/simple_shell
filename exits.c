@@ -1,11 +1,12 @@
 #include "main.h"
 
 /**
+ * _strncpy - Copies a string up to a specified number of characters.
+ * @dest: Pointer to the destination buffer.
+ * @src: Pointer to the source string.
+ * @n: Maximum number of characters to copy.
  *
- *
- *
- *
- *
+ * Return: Pointer to the destination string.
  */
 char *_strncpy(char *dest, char *src, int n)
 {
@@ -30,11 +31,12 @@ char *_strncpy(char *dest, char *src, int n)
 	return (s);
 }
 /**
+ * _strncat - Concatenates a portion of a string to another string.
+ * @dest: Pointer to the destination string.
+ * @src: Pointer to the source string.
+ * @n: Maximum number of characters to concatenate.
  *
- *
- *
- *
- *
+ * Return: Pointer to the destination string.
  */
 char *_strncat(char *dest, char *src, int n)
 {
@@ -56,11 +58,12 @@ char *_strncat(char *dest, char *src, int n)
 	return (s);
 }
 /**
+ * _strchr - Locates the first occurrence of a
+ * character in a string.
+ * @s: Pointer to the string.
+ * @c: Character to be found.
  *
- *
- *
- *
- *
+ * Return: Pointer to first occurrence of character in the string
  */
 char *_strchr(char *s, char c)
 {

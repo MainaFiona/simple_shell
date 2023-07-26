@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 /**
  * is_cmd - checking if given path corresponds to a regular file
  * @info: pointer to the info_t struct

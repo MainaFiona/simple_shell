@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * _eputs - Writes a string to standard error.
@@ -25,9 +25,9 @@ void _eputs(char *str)
 int _eputchar(char c)
 {
 	static int i;
-	static char buff[WRITE_BUF_SIZE];
+	static char buff[WRITE_BUFF_SIZE];
 
-	if (c == BUFF_FLUSH || i >= WRITE_BUF_SIZE)
+	if (c == BUFF_FLUSH || i >= WRITE_BUFF_SIZE)
 	{
 		write(2, buff, i);
 		i = 0;
@@ -46,9 +46,9 @@ int _eputchar(char c)
 int _putfd(char c, int fd)
 {
 	static int i;
-	static char buff[WRITE_BUF_SIZE];
+	static char buff[WRITE_BUFF_SIZE];
 
-	if (c == BUFF_FLUSH || i >= WRITE_BUF_SIZE)
+	if (c == BUFF_FLUSH || i >= WRITE_BUFF_SIZE)
 	{
 		write(fd, buff, i);
 		i = 0;

@@ -1,12 +1,12 @@
 #include "main.h"
 /**
- * myexit - will exist the shell interface
+ * _myexit - will exist the shell interface
  *
  * @info: struct that contains potential args
  *
  * Return: (0) with a exist status
  */
-int myexit(info_t *info)
+int _myexit(info_t *info)
 {
 	int exitcheck;
 
@@ -28,12 +28,12 @@ int myexit(info_t *info)
 	return (-2);
 }
 /**
- * mycd - will change current directory
+ * _mycd - will change current directory
  * @info: struct that contains potential arguments
  *
  * Return: Always (0)
  */
-int mycd(info_t *info)
+int _mycd(info_t *info)
 {
 	char *s, *dir, buffer[1024];
 	int chdir_ret;
@@ -75,12 +75,12 @@ int mycd(info_t *info)
 	return (0);
 }
 /**
- * myhelp - will change process directory
+ * _myhelp - will change process directory
  * @info: struct that contains potential args
  *
  * Return: Always (0)
  */
-int myhelp(info_t *info)
+int _myhelp(info_t *info)
 {
 	char **arg_array;
 

@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * strtow - Splits a string into an array of words.
@@ -18,7 +18,7 @@ char **strtow(char *str, char *d)
 	if (!d)
 		d = " ";
 	for (i = 0; str[i] != '\0'; i++)
-		if (!isdelimit(str[i], d) && (isdelimit(str[i + 1], d) || !str[i + 1]))
+		if (!is_delim(str[i], d) && (is_delim(str[i + 1], d) || !str[i + 1]))
 			numwords++;
 
 	if (numwords == 0)
@@ -28,10 +28,10 @@ char **strtow(char *str, char *d)
 		return (NULL);
 	for (i = 0, j = 0; j < numwords; j++)
 	{
-		while (isdelimit(str[i], d))
+		while (is_delim(str[i], d))
 			i++;
 		k = 0;
-		while (!isdelimit(str[i + k], d) && str[i + k])
+		while (!is_delim(str[i + k], d) && str[i + k])
 			k++;
 		s[j] = malloc((k + 1) * sizeof(char));
 		if (!s[j])

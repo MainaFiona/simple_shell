@@ -1,12 +1,12 @@
 #include "main.h"
 /**
- * myhistory - will display history list
+ * _myhistory - will display history list
  * @info: struct that contains potential args
  *
  * Return: Always (0)
  */
 
-int myhistory(info_t *info)
+int _myhistory(info_t *info)
 {
 	print_list(info->history);
 	return (0);
@@ -79,7 +79,7 @@ int print_alias(list_t *node)
  * @info: struct that contains potential args
  * Return: always 0
  */
-int myalias(info_t *info)
+int _myalias(info_t *info)
 {
 	int i = 0;
 	char *p = NULL;
