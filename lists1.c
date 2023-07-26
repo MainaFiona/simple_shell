@@ -1,8 +1,7 @@
 #include "main.h"
 /**
  * list_len - function that will print the lenght of a list
- *
- * @h: head node 
+ * @h: head node of list
  * Return: list size
  */
 size_t list_len(const list_t *h)
@@ -17,12 +16,9 @@ size_t list_len(const list_t *h)
 	return (i);
 }
 /**
- *
- *
- *
- *
- *
- *
+ * list_to_strings - function will convert lists to str
+ * @head: pointer to head of list
+ * Return: Arrays of strings
  */
 char **list_to_strings(list_t *head)
 {
@@ -54,11 +50,9 @@ char **list_to_strings(list_t *head)
 	return (strs);
 }
 /**
- * 
- *
- *
- *
- *
+ * print_list - function will print list
+ * @h: head of list
+ * Return: number of nodes in list
  */
 size_t print_list(const list_t *h)
 {
@@ -77,14 +71,14 @@ size_t print_list(const list_t *h)
 	return (i);
 }
 /**
+ * node_start_with - Finds the first node in a linked list
+ * @node: Pointer to the head of the linked list
+ * @prefix: Prefix string to search for
+ * @c: Optional character to match after the prefix
  *
- *
- *
- *
- *
- *
+ * Return: Pointer to first matching node, or NULL if no match
  */
-list_t *node_starts_with(list_t *node, char *prefix, char c)
+list_t *node_start_with(list_t *node, char *prefix, char c)
 {
 	char *p = NULL;
 
@@ -98,11 +92,11 @@ list_t *node_starts_with(list_t *node, char *prefix, char c)
 	return (NULL);
 }
 /**
+ * get_node_index - Receives index of node in linked list.
+ * @head: Pointer to head of linked list.
+ * @node: Pointer to node to find the index of.
  *
- *
- *
- *
- *
+ * Return: index of node if found, or -1 if node not found.
  */
 ssize_t get_node_index(list_t *head, list_t *node)
 {
