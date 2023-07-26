@@ -1,16 +1,16 @@
 #include "main.h"
 /**
+ * myexit - will exist the shell interface
  *
+ * @info: struct that contains potential args
  *
- *
- *
- *
+ * Return: (0) with a exist status
  */
 int myexit(info_t *info)
 {
 	int exitcheck;
 
-	if (info->argv[1])  /* If there is an exit arguement */
+	if (info->argv[1])
 	{
 		exitcheck = _erratoi(info->argv[1]);
 		if (exitcheck == -1)
@@ -28,12 +28,12 @@ int myexit(info_t *info)
 	return (-2);
 }
 /**
+ * mycd - will change current directory
+ * @info: struct that contains potential arguments
  *
- *
- *
- *
+ * Return: Always (0)
  */
-int _mycd(info_t *info)
+int mycd(info_t *info)
 {
 	char *s, *dir, buffer[1024];
 	int chdir_ret;
@@ -45,8 +45,7 @@ int _mycd(info_t *info)
 	{
 		dir = _getenv(info, "HOME=");
 		if (!dir)
-			chdir_ret = /* TODO: what should this be? */
-				chdir((dir = _getenv(info, "PWD=")) ? dir : "/");
+			chdir_ret = chdir((dir = _getenv(info, "PWD=")) ? dir : "/");
 		else
 			chdir_ret = chdir(dir);
 	}
@@ -59,8 +58,7 @@ int _mycd(info_t *info)
 			return (1);
 		}
 		_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
-		chdir_ret = /* TODO: should this be? */
-			chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
+		chdir_ret = chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
 	}
 	else
 		chdir_ret = chdir(info->argv[1]);
@@ -77,12 +75,12 @@ int _mycd(info_t *info)
 	return (0);
 }
 /**
+ * myhelp - will change process directory
+ * @info: struct that contains potential args
  *
- *
- *
- *
+ * Return: Always (0)
  */
-int _myhelp(info_t *info)
+int myhelp(info_t *info)
 {
 	char **arg_array;
 
