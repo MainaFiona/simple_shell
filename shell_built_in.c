@@ -28,10 +28,10 @@ int _myexit(info_t *info)
 	return (-2);
 }
 /**
- * _mycd - will change current directory
- * @info: struct that contains potential arguments
  *
- * Return: Always (0)
+ *
+ *
+ *
  */
 int _mycd(info_t *info)
 {
@@ -75,10 +75,10 @@ int _mycd(info_t *info)
 	return (0);
 }
 /**
- * _myhelp - will change process directory
- * @info: struct that contains potential args
  *
- * Return: Always (0)
+ *
+ *
+ *
  */
 int _myhelp(info_t *info)
 {

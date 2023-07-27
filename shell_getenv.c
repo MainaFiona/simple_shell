@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _myenv - will print the latest env
+ *_myenv - will print the latest env
  * @info: struct contains potential args
  * Return: always 0
  */
@@ -32,8 +32,8 @@ char *_getenv(info_t *info, const char *name)
 }
 /**
  * _mysetenv - will initialize a new env variable
- * @info: struct contains potential args
- * Return: always (0)
+ *
+ *
  */
 int _mysetenv(info_t *info)
 {
@@ -47,9 +47,9 @@ int _mysetenv(info_t *info)
 	return (1);
 }
 /**
- * _myunsetenv - will remove environment variable
- * @info: struct that contains potential args
- * Return: Always 0
+ *
+ *
+ *
  */
 int _myunsetenv(info_t *info)
 {
@@ -66,9 +66,8 @@ int _myunsetenv(info_t *info)
 	return (0);
 }
 /**
- * populate_env_list - will environment linked list
- * @info: struct that contains potential args
- * Return: Always 0
+ *
+ *
  */
 int populate_env_list(info_t *info)
 {
@@ -80,4 +79,3 @@ int populate_env_list(info_t *info)
 	info->env = node;
 	return (0);
 }
-
