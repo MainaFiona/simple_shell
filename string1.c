@@ -47,7 +47,7 @@ char *_strdup(const char *str)
 /**
  * _puts - function that prints input
  *
- * str: string to print
+ * @str: string to print
  *
  * Return: void
  */

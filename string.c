@@ -1,11 +1,9 @@
 #include "main.h"
 /**
+ * _strlen - will return the len of a str
  *
- *
- *
- *
- *
- *
+ * @s: str which len will be returned
+ * Return: len of str
  */
 int _strlen(char *s)
 {
@@ -18,10 +16,10 @@ int _strlen(char *s)
 	return (i);
 }
 /**
- *
- *
- *
- *
+ * _strcmp - will compare ywo str
+ * @s1: str to compare
+ * @s2: char to compare to str
+ * Return: -1 if s1 less than s2, 1 if s1 greater that s2, 0 if equal
  */
 int _strcmp(char *s1, char *s2)
 {
@@ -38,10 +36,10 @@ int _strcmp(char *s1, char *s2)
 		return (*s1 < *s2 ? -1 : 1);
 }
 /**
- *
- *
- *
- *
+ * starts_with - will verify if needle starts with haystack
+ * @haystack: the str to be searched
+ * @needle: substr to be located
+ * Return: location of the following char
  *
  */
 char *starts_with(const char *haystack, const char *needle)
@@ -52,11 +50,10 @@ char *starts_with(const char *haystack, const char *needle)
 	return ((char *)haystack);
 }
 /**
- *
- *
- *
- *
- *
+ * _strcat - it will concate two str
+ * @dest: buffer dest
+ * @src: buffer src
+ * Return: dest to pointer buff
  */
 char *_strcat(char *dest, char *src)
 {

@@ -74,7 +74,7 @@ int print_alias(list_t *node)
 	return (1);
 }
 /**
- * myalias - will work just like the builtin
+ * _myalias - will work just like the builtin
  *
  * @info: struct that contains potential args
  * Return: always 0
